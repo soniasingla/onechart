@@ -1,0 +1,14 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+name: Linting
+jobs:
+  kubeval:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: kubeval
+      run: make kubeval
