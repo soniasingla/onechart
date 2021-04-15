@@ -26,7 +26,7 @@ jobs:
     - name: Chart version
       id: chart_version
       run: |
-        echo "$(cat charts/onechart/Chart.yaml | grep version: | sed 's/"//g')"
+        echo ::set-output name=CHART_VERSION::$(cat charts/onechart/Chart.yaml | grep version: | sed 's/"//g')
 
     # - name: Verify version
     #   id: verify_version
@@ -71,4 +71,4 @@ jobs:
       run: |
         echo "Publishing ${{ steps.fetch_tag.outputs.version_tag }} to the helm repository"
         echo "Run ${{ steps.versioning.outputs.version }}"
-        echo "Version ${{ steps.chart_version.outputs.version }}"
+        echo "Version ${{ steps.chart_version.outputs.chart_version }}"
